@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMAR PARFUM | Семей</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: #0c1810; color: #f0f4f1; padding-bottom: 90px; }
+        
+        header { background: #12291b; padding: 22px 20px 18px; text-align: center; border-bottom: 1px solid #234830; }
+        .logo { font-size: 26px; font-weight: 800; color: #e2c068; letter-spacing: 2px; }
+        .sublogo { font-size: 13px; color: #8eb39b; margin-top: 4px; }
+
+        .banner { background: #12291b; padding: 16px 20px; text-align: center; margin: 12px 15px; border-radius: 16px; border: 1px solid #1e422d; }
+        .banner h2 { font-size: 17px; color: #ffffff; font-weight: 600; margin-bottom: 4px; }
+        .banner p { font-size: 13px; color: #9ebda8; }
+
+        .search-box { padding: 0 15px 12px; }
+        .search-box input { width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid #234830; background: #12291b; color: #fff; font-size: 15px; outline: none; }
+        .search-box input:focus { border-color: #e2c068; }
+
+        .main-menu { display: flex; flex-direction: column; gap: 10px; padding: 0 15px; }
+        .menu-btn { background: #12291b; border: 1px solid #20442c; border-radius: 16px; padding: 18px 20px; text-align: left; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s; }
+        .menu-btn:active { background: #1a3a27; }
+        .menu-btn h3 { font-size: 18px; color: #e2c068; font-weight: 700; }
+        .menu-btn p { font-size: 13px; color: #8eb39b; margin-top: 3px; }
+        .arrow { font-size: 20px; color: #e2c068; }
+
+        .catalog-section { display: none; padding: 0 15px; }
+        .catalog-section.active { display: block; }
+
+        .back-btn { background: #1e422d; color: #e2c068; border: none; padding: 12px 20px; border-radius: 12px; margin-bottom: 15px; font-size: 15px; font-weight: 600; cursor: pointer; width: 100%; text-align: left; }
+
+        .product-card { background: #12291b; border: 1px solid #1f422c; border-radius: 16px; padding: 18px; margin-bottom: 12px; }
+        .product-title { font-size: 19px; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
+        .product-sub { font-size: 13px; color: #8eb39b; margin-bottom: 14px; }
+
+        .size-selector { display: flex; gap: 8px; margin-bottom: 14px; }
+        .size-btn { flex: 1; padding: 10px; background: #0c1810; border: 1px solid #234830; border-radius: 10px; color: #a3c1ad; font-size: 14px; cursor: pointer; text-align: center; }
+        .size-btn.active { background: #e2c068; color: #0c1810; font-weight: 700; border-color: #e2c068; }
+
+        .price-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .price-val { font-size: 21px; font-weight: 800; color: #e2c068; }
+
+        .order-btn { display: block; width: 100%; background: #25d366; color: #ffffff; text-align: center; padding: 14px; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2); }
+
+        .footer-info { position: fixed; bottom: 0; left: 0; right: 0; background: #0e2015; border-top: 1px solid #1f422c; padding: 14px; text-align: center; font-size: 13px; color: #8eb39b; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">UMAR PARFUM</div>
+        <div class="sublogo">Семей, ул. Дулатова 266</div>
+    </header>
+
+    <div class="banner">
+        <h2>Стойкость ароматов до 7 дней</h2>
+        <p>Бесплатная доставка по Семею и Казахстану</p>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 Найти аромат (Bvlgari, Tom Ford)..." oninput="searchParfume()">
+    </div>
+
+    <!-- Сезонное и удобное меню -->
+    <div class="main-menu" id="menuBlocks">
+        <div class="menu-btn" onclick="showCategory('autumn_winter')">
+            <div>
+                <h3>Осень – Зима ❄️</h3>
+                <p>Теплые, согревающие и шлейфовые ароматы</p>
+            </div>
+            <span class="arrow">➔</span>
+        </div>
+        <div class="menu-btn" onclick="showCategory('spring_summer')">
+            <div>
+                <h3>Весна – Лето ☀️</h3>
+                <p>Свежие, цитрусовые и легкие композиции</p>
+            </div>
+            <span class="arrow">➔</span>
+        </div>
+        <div class="menu-btn" onclick="showCategory('men')">
+            <div>
+                <h3>Мужская коллекция 🐺</h3>
+                <p>Строгие, мужественные и нишевые ароматы</p>
+            </div>
+            <span class="arrow">➔</span>
+        </div>
+        <div class="menu-btn" onclick="showCategory('women')">
+            <div>
+                <h3>Женская коллекция 🌸</h3>
+                <p>Чувственные, изысканные и яркие парфюмы</p>
+            </div>
+            <span class="arrow">➔</span>
+        </div>
+        <div class="menu-btn" onclick="showCategory('top')">
+            <div>
+                <h3>Бестселлеры & Топ 🔥</h3>
+                <p>Самые популярные позиции магазина</p>
+            </div>
+            <span class="arrow">➔</span>
+        </div>
+    </div>
+
+    <!-- Каталог товаров -->
+    <div class="catalog-section" id="catalogArea">
+        <button class="back-btn" onclick="backToMenu()">⬅ Назад в меню</button>
+        <div id="productList"></div>
+    </div>
+
+    <div class="footer-info">
+        📍 Доставка по Казахстану • Прямой заказ
+    </div>
+
+    <script>
+        const UMAR_PHONE = "77078840018";
+
+        const perfumes = [
+            // Осень - Зима / Ниша / Согревающие
+            { id: 1, name: "Khamrah Lattafa", cat: ["autumn_winter", "top", "men", "women"], p10: 6500, p30: 15000 },
+            { id: 2, name: "Tom Ford Tobacco Vanille", cat: ["autumn_winter", "top", "women", "men"], p10: 7500, p30: 20000 },
+            { id: 3, name: "Kilian Angels' Share", cat: ["autumn_winter", "top", "women"], p10: 7500, p30: 20000 },
+            { id: 4, name: "Tom Ford Noir Extreme", cat: ["autumn_winter", "men"], p10: 7500, p30: 20000 },
+            { id: 5, name: "Initio Side Effect", cat: ["autumn_winter", "men"], p10: 7500, p30: 20000 },
+            { id: 6, name: "Mancera Red Tobacco", cat: ["autumn_winter", "men"], p10: 7000, p30: 18000 },
+            { id: 7, name: "Tom Ford Black Orchid", cat: ["autumn_winter", "women"], p10: 7500, p30: 20000 },
+            { id: 8, name: "YSL Black Opium", cat: ["autumn_winter", "women"], p10: 7000, p30: 17000 },
+            { id: 9, name: "Baccarat Rouge 540", cat: ["autumn_winter", "top", "men", "women"], p10: 7500, p30: 20000 },
+            { id: 10, name: "Initio Oud For Greatness", cat: ["autumn_winter", "men"], p10: 7500, p30: 20000 },
+            { id: 11, name: "Tom Ford Lost Cherry", cat: ["autumn_winter", "women"], p10: 7500, p30: 20000 },
+            { id: 12, name: "Clive Christian Blonde Amber", cat: ["autumn_winter", "men"], p10: 7500, p30: 20000 },
+
+            // Весна - Лето / Свежие
+            { id: 13, name: "Versace Man Eau Fraiche", cat: ["spring_summer", "top", "men"], p10: 6500, p30: 15000 },
+            { id: 14, name: "Chanel Allure Homme Sport", cat: ["spring_summer", "men"], p10: 7000, p30: 16000 },
+            { id: 15, name: "Louis Vuitton Imagination", cat: ["spring_summer", "top", "men"], p10: 7500, p30: 20000 },
+            { id: 16, name: "Louis Vuitton On The Beach", cat: ["spring_summer", "men"], p10: 7500, p30: 20000 },
+            { id: 17, name: "Pacific Chill Louis Vuitton", cat: ["spring_summer", "men"], p10: 7500, p30: 20000 },
+            { id: 18, name: "Versace Bright Crystal", cat: ["spring_summer", "top", "women"], p10: 6500, p30: 15000 },
+            { id: 19, name: "Chanel Chance Eau Tendre", cat: ["spring_summer", "women"], p10: 7000, p30: 17000 },
+            { name: "Byredo Bal d'Afrique", cat: ["spring_summer", "top", "men", "women"], p10: 7500, p30: 20000 },
+            { name: "Bvlgari Tygar", cat: ["spring_summer", "men"], p10: 7500, p30: 20000 },
+            { name: "Creed Silver Mountain Water", cat: ["spring_summer", "men"], p10: 7500, p30: 20000 },
+            { name: "Dolce & Gabbana L'Imperatrice", cat: ["spring_summer", "women"], p10: 6500, p30: 15000 },
+
+            // Мужские / Ниша
+            { name: "Creed Aventus", cat: ["men", "top"], p10: 7500, p30: 20000 },
+            { name: "Marc-Antoine Barrois Ganymede", cat: ["men", "top"], p10: 7500, p30: 20000 },
+            { name: "Orto Parisi Megamare", cat: ["men", "top"], p10: 7500, p30: 20000 },
+            { name: "Ex Nihilo Blue Talisman", cat: ["men", "top"], p10: 7500, p30: 20000 },
+            { name: "Dior Sauvage", cat: ["men"], p10: 7000, p30: 17000 },
+            { name: "Bleu de Chanel", cat: ["men"], p10: 7000, p30: 17000 },
+            { name: "Santal 33 Le Labo", cat: ["men"], p10: 7500, p30: 20000 },
+            { name: "Fleur Narcotique Ex Nihilo", cat: ["men"], p10: 7500, p30: 20000 },
+            { name: "Bois Imperial Essential Parfums", cat: ["men"], p10: 7500, p30: 19000 },
+
+            // Женские
+            { name: "J'adore Dior", cat: ["women"], p10: 7000, p30: 16500 },
+            { name: "YSL Libre", cat: ["women", "top"], p10: 7000, p30: 17000 },
+            { name: "Amouage Guidance", cat: ["women", "top"], p10: 7500, p30: 20000 },
+            { name: "Victoria's Secret Bombshell", cat: ["women"], p10: 6500, p30: 14000 },
+            { name: "Byredo Blanche", cat: ["women"], p10: 7500, p30: 20000 },
+            { name: "Parfums de Marly Delina", cat: ["women", "top"], p10: 7500, p30: 20000 },
+            { name: "Attar Collection Hayati", cat: ["women"], p10: 7000, p30: 18000 }
+        ];
+
+        let selectedSizes = {};
+
+        function showCategory(categoryKey) {
+            document.getElementById('menuBlocks').style.display = 'none';
+            document.getElementById('catalogArea').classList.add('active');
+            
+            const filtered = perfumes.filter(p => p.cat.includes(categoryKey));
+            renderList(filtered);
+        }
+
+        function renderList(listItems) {
+            const list = document.getElementById('productList');
+            list.innerHTML = '';
+
+            if (listItems.length === 0) {
+                list.innerHTML = '<p style="text-align:center; padding: 30px; color: #8eb39b;">Ароматы не найдены</p>';
+                return;
+            }
+
+            listItems.forEach((item, index) => {
+                if (!selectedSizes[index]) {
+                    selectedSizes[index] = 10; // По умолчанию 10 мл
+                }
+
+                const currentSize = selectedSizes[index];
+                const currentPrice = currentSize === 10 ? item.p10 : item.p30;
+
+                const waText = encodeURIComponent(`Здравствуйте, Umar Parfum! Хочу заказать аромат: ${item.name} (${currentSize} мл) за ${currentPrice.toLocaleString()} ₸`);
+                const waUrl = `https://wa.me/${UMAR_PHONE}?text=${waText}`;
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-title">${item.name}</div>
+                    <div class="product-sub">Элитный парфюм • Стойкий шлейф</div>
+                    
+                    <div class="size-selector">
+                        <button class="size-btn ${currentSize === 10 ? 'active' : ''}" onclick="selectSize(${index}, 10, ${item.p10}, '${item.name}', this)">10 мл</button>
+                        <button class="size-btn ${currentSize === 30 ? 'active' : ''}" onclick="selectSize(${index}, 30, ${item.p30}, '${item.name}', this)">30 мл</button>
+                    </div>
+
+                    <div class="price-row">
+                        <span style="font-size: 13px; color: #8eb39b;">Стоимость:</span>
+                        <div class="price-val" id="price-${index}">${currentPrice.toLocaleString()} ₸</div>
+                    </div>
+
+                    <a href="${waUrl}" target="_blank" class="order-btn" id="btn-${index}">Заказать в WhatsApp</a>
+                `;
+                list.appendChild(card);
+            });
+        }
+
+        function selectSize(itemIndex, size, price, name, btnEl) {
+            selectedSizes[itemIndex] = size;
+            
+            const parent = btnEl.parentElement;
+            parent.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+            btnEl.classList.add('active');
+
+            const priceEl = document.getElementById(`price-${itemIndex}`);
+            if (priceEl) priceEl.innerText = price.toLocaleString() + ' ₸';
+
+            const btnLink = document.getElementById(`btn-${itemIndex}`);
+            if (btnLink) {
+                const waText = encodeURIComponent(`Здравствуйте, Umar Parfum! Хочу заказать аромат: ${name} (${size} мл) за ${price.toLocaleString()} ₸`);
+                btnLink.href = `https://wa.me/${UMAR_PHONE}?text=${waText}`;
+            }
+        }
+
+        function backToMenu() {
+            document.getElementById('menuBlocks').style.display = 'flex';
+            document.getElementById('catalogArea').classList.remove('active');
+            document.getElementById('searchInput').value = '';
+        }
+
+        function searchParfume() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            if (query === '') {
+                backToMenu();
+                return;
+            }
+
+            document.getElementById('menuBlocks').style.display = 'none';
+            document.getElementById('catalogArea').classList.add('active');
+
+            const filtered = perfumes.filter(p => p.name.toLowerCase().includes(query));
+            renderList(filtered);
+        }
+    </script>
+</body>
+  </html>

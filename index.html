@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMAR PARFUM | Семей</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { background-color: #0d0d0d; color: #e5e5e5; line-height: 1.5; }
+        header { background: #141414; padding: 25px 20px; text-align: center; border-bottom: 1px solid #2a2a2a; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 26px; font-weight: 800; letter-spacing: 3px; color: #d4af37; text-transform: uppercase; }
+        .sub-logo { font-size: 12px; color: #888; letter-spacing: 1px; margin-top: 4px; }
+        .badge { display: inline-block; background: #1f1f1f; padding: 6px 14px; border-radius: 20px; font-size: 12px; color: #ccc; border: 1px solid #333; margin-top: 10px; }
+        
+        .hero { padding: 40px 20px; text-align: center; background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1000&q=80') center/cover; border-bottom: 1px solid #222; }
+        .hero h1 { font-size: 28px; color: #fff; margin-bottom: 10px; font-weight: 700; }
+        .hero p { font-size: 14px; color: #aaa; max-width: 400px; margin: 0 auto; }
+
+        .container { padding: 25px 15px; max-width: 600px; margin: 0 auto; }
+        .section-title { font-size: 20px; color: #d4af37; text-transform: uppercase; letter-spacing: 1.5px; text-align: center; margin-bottom: 20px; font-weight: 700; }
+
+        .perfume-card { background: #161616; border: 1px solid #282828; border-radius: 14px; padding: 18px; margin-bottom: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .perfume-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+        .perfume-title { font-size: 18px; font-weight: 700; color: #fff; }
+        .tag { background: #d4af37; color: #000; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; }
+        .perfume-desc { font-size: 13px; color: #999; margin-bottom: 15px; }
+
+        .volume-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .vol-option { background: #0d0d0d; border: 1px solid #333; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; }
+        .vol-option.active { border-color: #d4af37; background: #1a170d; }
+        .vol-size { font-size: 12px; color: #aaa; display: block; }
+        .vol-price { font-size: 15px; font-weight: 700; color: #d4af37; }
+
+        .buy-btn { width: 100%; background: #25D366; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        
+        footer { text-align: center; padding: 25px; color: #555; font-size: 12px; border-top: 1px solid #1a1a1a; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">UMAR PARFUM</div>
+        <div class="sub-logo">Селективная & Арабская Парфюмерия</div>
+        <div class="badge">📍 Семей, ул. Дулатова 266</div>
+    </header>
+
+    <div class="hero">
+        <h1>Каталог Ароматов</h1>
+        <p>Выберите объем и оформите заказ напрямую через WhatsApp с доставкой по Семею</p>
+    </div>
+
+    <div class="container">
+        <div class="section-title">🔥 Топовые Хиты</div>
+
+        <div class="perfume-card">
+            <div class="perfume-header">
+                <div class="perfume-title">Iceboars (Авторский)</div>
+                <div class="tag">Хит Продаж</div>
+            </div>
+            <div class="perfume-desc">Свежий, стойкий, фирменный авторский аромат. Идеален на каждый день.</div>
+            <div class="volume-selector">
+                <div class="vol-option active">
+                    <span class="vol-size">Флакон 10 мл</span>
+                    <span class="vol-price">6 500 ₸</span>
+                </div>
+                <div class="vol-option">
+                    <span class="vol-size">Флакон 30 мл</span>
+                    <span class="vol-price">15 000 ₸</span>
+                </div>
+            </div>
+            <button class="buy-btn" onclick="orderPerfume('Iceboars (Авторский)')">Заказать в WhatsApp</button>
+        </div>
+
+        <div class="perfume-card">
+            <div class="perfume-header">
+                <div class="perfume-title">Bvlgari Tygar</div>
+                <div class="tag">Топ</div>
+            </div>
+            <div class="perfume-desc">Яркий цитрусовый аккорд с древесно-амбровой базой. Мощный шлейф.</div>
+            <div class="volume-selector">
+                <div class="vol-option active">
+                    <span class="vol-size">Флакон 10 мл</span>
+                    <span class="vol-price">7 500 ₸</span>
+                </div>
+                <div class="vol-option">
+                    <span class="vol-size">Флакон 30 мл</span>
+                    <span class="vol-price">18 000 ₸</span>
+                </div>
+            </div>
+            <button class="buy-btn" onclick="orderPerfume('Bvlgari Tygar')">Заказать в WhatsApp</button>
+        </div>
+
+        <div class="section-title" style="margin-top: 30px;">🍂 Тренд Осень / Зима</div>
+
+        <div class="perfume-card">
+            <div class="perfume-header">
+                <div class="perfume-title">Louis Vuitton Line</div>
+                <div class="tag">Премиум</div>
+            </div>
+            <div class="perfume-desc">Глубокие, согревающие селективные мотивы для прохладного сезона.</div>
+            <div class="volume-selector">
+                <div class="vol-option active">
+                    <span class="vol-size">Флакон 10 мл</span>
+                    <span class="vol-price">7 500 ₸</span>
+                </div>
+                <div class="vol-option">
+                    <span class="vol-size">Флакон 30 мл</span>
+                    <span class="vol-price">20 000 ₸</span>
+                </div>
+            </div>
+            <button class="buy-btn" onclick="orderPerfume('Louis Vuitton Line')">Заказать в WhatsApp</button>
+        </div>
+
+        <div class="perfume-card">
+            <div class="perfume-header">
+                <div class="perfume-title">Blue Panda</div>
+                <div class="tag">Новинка</div>
+            </div>
+            <div class="perfume-desc">Насыщенный, комплиментарный аромат с высокой стойкостью.</div>
+            <div class="volume-selector">
+                <div class="vol-option active">
+                    <span class="vol-size">Флакон 10 мл</span>
+                    <span class="vol-price">6 500 ₸</span>
+                </div>
+                <div class="vol-option">
+                    <span class="vol-size">Флакон 30 мл</span>
+                    <span class="vol-price">16 000 ₸</span>
+                </div>
+            </div>
+            <button class="buy-btn" onclick="orderPerfume('Blue Panda')">Заказать в WhatsApp</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; UMAR PARFUM Семей. Каталог витрина</p>
+    </footer>
+
+    <script>
+        function orderPerfume(name) {
+            const phone = "77078840018";
+            const message = `Ассаламу алейкум! Хочу уточнить наличие и заказать аромат: ${name}`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+    </script>
+</body>
+  </html>
